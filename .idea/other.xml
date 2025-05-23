@@ -565,6 +565,17 @@
           <option name="screenX" value="1080" />
           <option name="screenY" value="2424" />
         </PersistentDeviceSelectionData>
+        <PersistentDeviceSelectionData>
+          <option name="api" value="34" />
+          <option name="brand" value="samsung" />
+          <option name="codename" value="xcover7" />
+          <option name="id" value="xcover7" />
+          <option name="manufacturer" value="Samsung" />
+          <option name="name" value="SM-G556B" />
+          <option name="screenDensity" value="450" />
+          <option name="screenX" value="1080" />
+          <option name="screenY" value="2408" />
+        </PersistentDeviceSelectionData>
       </list>
     </option>
   </component>
