@@ -12,6 +12,8 @@ public class Pipe {
     private final boolean isTop;
     private boolean scored = false;
     private final float widthPx, headH;
+    private final RectF bodyDst = new RectF();
+    private final RectF headDst = new RectF();
 
     public Pipe(float centerY, float widthPx, float gapPx,
                 boolean isTopPipe, float screenH, float screenW) {
@@ -38,14 +40,13 @@ public class Pipe {
 
     public void draw(Canvas c) {
         float bodyH = totalHeight - headH;
-        RectF bodyDst, headDst;
 
         if (isTop) {
-            bodyDst = new RectF(x, 0, x + widthPx, bodyH);
-            headDst = new RectF(x, bodyH, x + widthPx, bodyH + headH);
+            bodyDst.set(x, 0, x + widthPx, bodyH);
+            headDst.set(x, bodyH, x + widthPx, bodyH + headH);
         } else {
-            headDst = new RectF(x, top, x + widthPx, top + headH);
-            bodyDst = new RectF(x, top + headH, x + widthPx, top + totalHeight);
+            headDst.set(x, top, x + widthPx, top + headH);
+            bodyDst.set(x, top + headH, x + widthPx, top + totalHeight);
         }
 
         c.drawBitmap(RAW_BODY, null, bodyDst, null);

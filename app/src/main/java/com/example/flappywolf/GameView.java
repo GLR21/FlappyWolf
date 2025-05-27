@@ -238,8 +238,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         // draw stretched background
         canvas.drawBitmap(background,null,backgroundDest,null);
 
-        for(Pipe p:new ArrayList<>(pipes)) p.draw(canvas);
-        for(Coin c:new ArrayList<>(coins)) c.draw(canvas);
+        //for(Pipe p:new ArrayList<>(pipes)) p.draw(canvas);
+        //for(Coin c:new ArrayList<>(coins)) c.draw(canvas);
+
+        synchronized (pipes) {
+            for (Pipe p : pipes) {
+                p.draw(canvas);
+            }
+        }
+        synchronized (coins) {
+            for (Coin c : coins) {
+                c.draw(canvas);
+            }
+        }
+
         bird.draw(canvas);
 
         // HUD score below notch/status bar

@@ -10,6 +10,7 @@ public class Coin {
     private float x, y, size;
     private int frame = 0;
     private static final int DELAY = 20;  // frames per side
+    private final RectF dst = new RectF();
 
     public Coin(float startX, float centerY, float displaySize) {
         x = startX;
@@ -25,9 +26,8 @@ public class Coin {
 
     public void draw(Canvas c) {
         // choose front for first DELAY frames, side for next DELAY
-        boolean front = frame < DELAY;
-        RectF dst = new RectF(x, y, x + size, y + size);
-        c.drawBitmap(front ? RAW_FRONT : RAW_SIDE, null, dst, null);
+        dst.set(x, y, x + size, y + size);
+        c.drawBitmap(frame < DELAY ? RAW_FRONT : RAW_SIDE, null, dst, null);
     }
 
     public float getX()      { return x; }
